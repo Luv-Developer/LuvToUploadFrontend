@@ -140,8 +140,7 @@ const App = () => {
             let data = response.data
             console.log(data)
             if (response.status === 200 || response.status === 201) {
-                const redirectPath = data && data.redirect ? data.redirect : '/profile'
-                window.location.href = `https://luvtoupload-in.onrender.com${redirectPath}`
+                window.location.href = "https://luvtoupload-in.onrender.com/profile"
             }
     }
     catch(err){
