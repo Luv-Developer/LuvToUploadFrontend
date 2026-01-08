@@ -129,19 +129,20 @@ const App = () => {
   const signedin = async(name,email,picture) => {
     try{
       let trops = {name,email,picture}
-      let response = await axios.post("https://luvtoupload-in.onrender.com/signin",trops,
-        {
-          withCredentials:true,
-          headers:{
-            "Content-Type":"application/json"
-          }
-        }
-      )
-      let data = response.data
-      console.log(data)
-      if(response.status === 200 || response.status === 201){
-        window.location.href = "https://luvtoupload-in.onrender.com/profile"
-      }
+            let response = await axios.post("https://luvtoupload-in.onrender.com/signin", trops, {
+                withCredentials: true,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            })
+            let data = response.data
+            console.log(data)
+            if (response.status === 200 || response.status === 201) {
+                const redirectPath = data && data.redirect ? data.redirect : '/profile'
+                window.location.href = `https://luvtoupload-in.onrender.com${redirectPath}`
+            }
     }
     catch(err){
       console.log(err)
