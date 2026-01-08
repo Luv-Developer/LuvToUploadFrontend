@@ -139,9 +139,6 @@ const App = () => {
             })
             let data = response.data
             console.log(data)
-            if (response.status === 200 || response.status === 201) {
-                window.location.href = "https://luvtoupload-in.onrender.com/profile"
-            }
     }
     catch(err){
       console.log(err)
